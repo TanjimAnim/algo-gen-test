@@ -1,0 +1,18 @@
+table {
+    margin-top: 20px
+}
+
+th,
+td {
+    padding: 1rem;
+    border: 1px solid
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.center {
+    margin-inline-start: 36%;
+
+}
