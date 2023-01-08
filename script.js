@@ -2,7 +2,6 @@
 function addRow() {
   var ths = document.querySelectorAll("table tr th");
   let tr = document.createElement("tr");
-
   for (let i = 0; i < ths.length; i++) {
     let td = document.createElement("td");
     let button1 = document.createElement("button");
@@ -57,6 +56,7 @@ function addColumn() {
     alert("please type in a different column name");
     return;
   }
+
   var table = document.querySelector("table tr");
   let button = document.createElement("button");
   button.innerHTML = "delete column";
@@ -68,6 +68,26 @@ function addColumn() {
   th.append(input.value);
   th.append(button);
   table.appendChild(th);
+  //to append row cells if column with rows already exists
+  if (document.querySelector("table tr td")) {
+    const trs = document.querySelectorAll("table tr");
+    for (let i = 0; i < trs.length; i++) {
+      //skipping this step because if i === 0, it is the table header row. that is why it was appending in the header row.
+      if (i === 0) {
+        continue;
+      }
+      const inputData = document.createElement("input");
+      const td = document.createElement("td");
+      let form = document.createElement("form");
+      inputData.placeholder = "type here";
+      inputData.type = "text";
+      inputData.className = "input-field";
+      form.append(inputData);
+      td.appendChild(inputData);
+      td.dataset.key = input.value;
+      trs[i].appendChild(td);
+    }
+  }
 
   input.value = "";
 }
